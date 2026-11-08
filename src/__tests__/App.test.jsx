@@ -8,7 +8,7 @@ describe('App full interactive portfolio integration', () => {
 
     // 1. Parallax & Grounded Hero
     expect(screen.getByText('WELCOME TO MY PORTOFOLIO')).toBeTruthy();
-    expect(screen.getByText(/Belajar merancang/i)).toBeTruthy();
+    expect(screen.getByText(/Membangun solusi/i)).toBeTruthy();
 
     // 2. Spotlight Portrait & 3D Glass Folders
     expect(screen.getByTestId('spotlight-portrait')).toBeTruthy();
@@ -35,7 +35,7 @@ describe('App full interactive portfolio integration', () => {
     // 6. Bilingual Switch to EN
     const enBtn = screen.getByRole('button', { name: /^EN$/i });
     fireEvent.click(enBtn);
-    expect(screen.getByText(/Learning to build/i)).toBeTruthy();
+    expect(screen.getByText(/Building practical/i)).toBeTruthy();
     expect(
       screen.getByText(/HIMAKOM Polban Student Community/i)
     ).toBeTruthy();

@@ -30,8 +30,8 @@ describe('Navbar and Hero components', () => {
     render(<Hero copy={portfolioData.id.hero} profile={portfolioData.profile} />);
 
     expect(screen.getByText('WELCOME TO MY PORTOFOLIO')).toBeTruthy();
-    expect(screen.getByText(/Belajar merancang/i)).toBeTruthy();
-    expect(screen.getByText(/tampilan web rapi/i)).toBeTruthy();
+    expect(screen.getByText(/Membangun solusi/i)).toBeTruthy();
+    expect(screen.getByText(/perangkat lunak/i)).toBeTruthy();
 
     const portrait = screen.getByAltText(portfolioData.profile.name);
     expect(portrait.getAttribute('src')).toBe('/assets/profile_0.png');
