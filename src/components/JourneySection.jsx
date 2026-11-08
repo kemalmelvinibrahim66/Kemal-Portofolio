@@ -24,13 +24,13 @@ export function JourneySection({ copy, onOpenLightbox }) {
         </div>
 
         {/* Two-Column Interactive Timelines (Education & Organizations) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left Column (6 cols): Numbered Education Steps with Hover Spotlight */}
-          <div className="lg:col-span-6 space-y-5">
-            <h3 className="text-sm font-mono uppercase tracking-wider text-slate-400">
-              {copy.edu_title || 'Pendidikan & Studi Independen'}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+          {/* Left Column (6 cols): Formal Education Card Vertically Centered without '01' badge */}
+          <div className="lg:col-span-6 flex flex-col">
+            <h3 className="text-sm font-mono uppercase tracking-wider text-slate-400 mb-5">
+              {copy.edu_title || 'Pendidikan Formal'}
             </h3>
-            <div className="space-y-4">
+            <div className="flex-1 flex flex-col justify-center space-y-4">
               {(copy.education || []).map((edu, idx) => {
                 const isDimmed = hoveredEdu !== null && hoveredEdu !== idx;
                 const isHighlighted = hoveredEdu === idx;
@@ -40,36 +40,25 @@ export function JourneySection({ copy, onOpenLightbox }) {
                     key={edu.title}
                     onMouseEnter={() => setHoveredEdu(idx)}
                     onMouseLeave={() => setHoveredEdu(null)}
-                    className={`p-5 rounded-2xl border transition-all duration-300 ${
+                    className={`p-6 sm:p-7 rounded-2xl border transition-all duration-300 ${
                       isHighlighted
                         ? 'bg-[#172030] border-[#FF6B4A]/50 shadow-xl'
                         : 'bg-[#151C28]/80 border-white/[0.07]'
                     } ${isDimmed ? 'opacity-45' : 'opacity-100'}`}
                   >
-                    <div className="flex items-start gap-4">
-                      <span
-                        className={`w-9 h-9 rounded-full font-mono text-xs font-bold flex items-center justify-center shrink-0 transition-all ${
-                          isHighlighted
-                            ? 'bg-white text-[#0C1017] shadow-[0_0_20px_rgba(255,255,255,0.4)]'
-                            : 'bg-[#FF6B4A]/15 text-[#FF6B4A] border border-[#FF6B4A]/30'
-                        }`}
-                      >
-                        {edu.step}
+                    <div className="space-y-1.5">
+                      <span className="text-xs font-mono text-[#FF856A]">
+                        {edu.date}
                       </span>
-                      <div className="space-y-1">
-                        <span className="text-xs font-mono text-[#FF856A]">
-                          {edu.date}
-                        </span>
-                        <h4 className="text-base font-bold text-white">
-                          {edu.title}
-                        </h4>
-                        <p className="text-xs font-mono text-slate-300">
-                          {edu.subtitle}
-                        </p>
-                        <p className="text-sm text-slate-400 leading-relaxed pt-1">
-                          {edu.desc}
-                        </p>
-                      </div>
+                      <h4 className="text-lg font-bold text-white">
+                        {edu.title}
+                      </h4>
+                      <p className="text-xs font-mono text-slate-300">
+                        {edu.subtitle}
+                      </p>
+                      <p className="text-sm text-slate-400 leading-relaxed pt-1.5">
+                        {edu.desc}
+                      </p>
                     </div>
                   </div>
                 );
@@ -80,7 +69,7 @@ export function JourneySection({ copy, onOpenLightbox }) {
           {/* Right Column (6 cols): Organization & Activity Timeline */}
           <div className="lg:col-span-6 space-y-5">
             <h3 className="text-sm font-mono uppercase tracking-wider text-slate-400">
-              {copy.org_title || 'Organisasi & Kepanitiaan'}
+              {copy.org_title || 'Organisasi, Kepanitiaan & Pelatihan'}
             </h3>
             <div className="relative pl-6 border-l border-white/10 space-y-8">
               {copy.timeline.map((item, idx) => {

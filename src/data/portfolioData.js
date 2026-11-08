@@ -265,8 +265,8 @@ export const portfolioData = {
     },
     gallery: {
       label: 'Dokumentasi Kampus',
-      heading: 'Kebersamaan di Organisasi & Kepanitiaan',
-      sub: 'Momen kegiatan bersama teman-teman di HIMAKOM Polban, Komisi Pengawasan (MPA), dan kepanitiaan SEDUTA 2025. Klik foto untuk memperbesar.',
+      heading: 'Kebersamaan di Organisasi & Himpunan',
+      sub: 'Momen kegiatan bersama teman-teman di HIMAKOM Polban dan Komisi Pengawasan (MPA). Klik foto untuk memperbesar.',
     },
     activities: [
       {
@@ -287,11 +287,11 @@ export const portfolioData = {
       },
       {
         id: 'act-3',
-        title: 'Kepanitiaan SEDUTA 2025 • PERMATA',
-        role: 'PJ Humas SEDUTA 2025',
-        date: '2025',
+        title: 'Kegiatan Himpunan',
+        role: 'HIMAKOM Polban • Politeknik Negeri Bandung',
+        date: '2026',
         image: '/assets/activity-himakom-3.jpeg',
-        caption: 'Momen kebersamaan saat bertugas sebagai Penanggung Jawab Humas pada rangkaian kegiatan SEDUTA 2025 bersama rekan-rekan panitia.',
+        caption: 'Momen kebersamaan bersama teman-teman saat mengikuti rangkaian kegiatan himpunan di jurusan.',
       },
     ],
     contact: {
@@ -553,8 +553,8 @@ export const portfolioData = {
     },
     gallery: {
       label: 'Campus Moments',
-      heading: 'Organizations & Committee Activities',
-      sub: 'Moments with friends and teammates at HIMAKOM Polban, the MPA Oversight Commission, and the SEDUTA 2025 committee. Click any photo to enlarge.',
+      heading: 'Life in Student Organizations',
+      sub: 'Moments with friends and teammates at HIMAKOM Polban and the MPA Oversight Commission. Click any photo to enlarge.',
     },
     activities: [
       {
@@ -575,11 +575,11 @@ export const portfolioData = {
       },
       {
         id: 'act-3',
-        title: 'SEDUTA 2025 Committee • PERMATA',
-        role: 'Public Relations Coordinator (PJ Humas SEDUTA 2025)',
-        date: '2025',
+        title: 'Student Association Activities',
+        role: 'HIMAKOM Polban • Politeknik Negeri Bandung',
+        date: '2026',
         image: '/assets/activity-himakom-3.jpeg',
-        caption: 'Moments with fellow committee members while serving as Public Relations Coordinator for SEDUTA 2025.',
+        caption: 'Shared moments with classmates and friends during student association activities at Polban.',
       },
     ],
     contact: {
