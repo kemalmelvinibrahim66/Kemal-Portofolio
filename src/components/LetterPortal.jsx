@@ -83,7 +83,7 @@ export function LetterPortal({ copy }) {
           }}
           role="radiogroup"
           aria-label="Choose portal letter"
-          className="relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-4 will-change-transform"
+          className="relative z-10 flex items-center justify-center gap-0.5 sm:gap-2 px-2 sm:px-4 max-w-full will-change-transform"
         >
           {word.map((letter, idx) => {
             const isSelected = idx === selectedIndex;
@@ -97,7 +97,7 @@ export function LetterPortal({ copy }) {
                 role="radio"
                 aria-checked={isSelected}
                 onClick={() => setSelectedIndex(idx)}
-                className={`text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter transition-colors duration-200 px-1 rounded-xl ${
+                className={`text-[30px] xs:text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter transition-colors duration-200 px-0.5 sm:px-1 rounded-xl ${
                   isSelected
                     ? 'text-[#FAFAFA] drop-shadow-[0_0_35px_rgba(255,107,74,0.85)]'
                     : 'text-white/75 hover:text-white'

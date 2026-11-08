@@ -91,11 +91,11 @@ export function ProjectsSection({
             </h2>
           </div>
 
-          {/* Segmented Pill Tab Bar (inspired by reference showcase) */}
+          {/* Segmented Pill Tab Bar (responsive full-width on mobile, inline on tablet/desktop) */}
           <div
             role="tablist"
             aria-label="Portfolio Categories"
-            className="inline-flex items-center p-1.5 rounded-2xl bg-white border border-zinc-200/90 shadow-lg shadow-zinc-900/5 self-start"
+            className="w-full sm:w-auto flex items-center justify-between sm:justify-start p-1 sm:p-1.5 rounded-2xl bg-white border border-zinc-200/90 shadow-lg shadow-zinc-900/5 self-start overflow-x-auto"
           >
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -107,7 +107,7 @@ export function ProjectsSection({
                   role="tab"
                   aria-selected={isSelected}
                   onClick={() => handleSelectTab(tab.id)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-bold whitespace-nowrap transition-all ${
                     isSelected
                       ? 'bg-[#FF6B4A] text-white shadow-md shadow-[#FF6B4A]/30'
                       : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100/70'

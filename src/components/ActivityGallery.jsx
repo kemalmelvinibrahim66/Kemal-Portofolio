@@ -30,12 +30,20 @@ export function ActivityGallery({ activities = [], copy = {}, onOpenLightbox }) 
 
         {/* 3D Perspective Floating Cards Stage */}
         <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pt-2"
           style={{ perspective: '1400px' }}
         >
           {activities.map((item, idx) => {
             const isHovered = hoveredId === item.id;
-            const defaultTilt = idx === 0 ? -3 : idx === 2 ? 3 : 0;
+            const isDesktop =
+              typeof window !== 'undefined' && window.innerWidth >= 768;
+            const defaultTilt = isDesktop
+              ? idx === 0
+                ? -2.5
+                : idx === 2
+                ? 2.5
+                : 0
+              : 0;
 
             return (
               <article
