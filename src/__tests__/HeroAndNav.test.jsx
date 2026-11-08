@@ -22,7 +22,7 @@ describe('Navbar and Hero components', () => {
     expect(screen.getByText('karya')).toBeTruthy();
     expect(screen.getByText('tentang')).toBeTruthy();
 
-    fireEvent.click(screen.getByRole('button', { name: /EN/i }));
+    fireEvent.click(screen.getByRole('button', { name: /^EN$/i }));
     expect(onSelectLang).toHaveBeenCalledWith('en');
   });
 
