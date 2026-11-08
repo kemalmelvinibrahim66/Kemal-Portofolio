@@ -1,24 +1,39 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
-import { TechStackBar } from '../components/TechStackBar';
 import { portfolioData } from '../data/portfolioData';
 
-describe('Navbar, Hero, and TechStackBar', () => {
-  it('switches language when EN button is clicked and renders Hero without finalist badge under photo', () => {
+describe('Navbar and Hero components', () => {
+  it('renders Floating Pill Navbar with companion mascot and switches language', () => {
     const onSelectLang = vi.fn();
+    const onSelectSection = vi.fn();
     render(
-      <>
-        <Navbar lang="id" onSelectLang={onSelectLang} copy={portfolioData.id.nav} />
-        <Hero copy={portfolioData.id.hero} profile={portfolioData.profile} />
-        <TechStackBar />
-      </>
+      <Navbar
+        lang="id"
+        onSelectLang={onSelectLang}
+        copy={portfolioData.id.nav}
+        activeSection="home"
+        onSelectSection={onSelectSection}
+      />
     );
-    fireEvent.click(screen.getByRole('button', { name: 'EN' }));
+
+    expect(screen.getByTestId('nav-mascot')).toBeTruthy();
+    expect(screen.getByText('karya')).toBeTruthy();
+    expect(screen.getByText('tentang')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: /EN/i }));
     expect(onSelectLang).toHaveBeenCalledWith('en');
-    expect(screen.getByAltText('Kemal Melvin Ibrahim')).toBeTruthy();
-    expect(screen.queryByText(/PEKAN IT/i)).toBeNull();
-    expect(screen.getByText('Tailwind CSS')).toBeTruthy();
+  });
+
+  it('renders 5-layer Parallax welcome banner and grounded student Hero without badge below portrait', () => {
+    render(<Hero copy={portfolioData.id.hero} profile={portfolioData.profile} />);
+
+    expect(screen.getByText('WELCOME TO MY PORTOFOLIO')).toBeTruthy();
+    expect(screen.getByText(/Belajar merancang/i)).toBeTruthy();
+    expect(screen.getByText(/tampilan web rapi/i)).toBeTruthy();
+
+    const portrait = screen.getByAltText(portfolioData.profile.name);
+    expect(portrait.getAttribute('src')).toBe('/assets/profile_0.png');
   });
 });

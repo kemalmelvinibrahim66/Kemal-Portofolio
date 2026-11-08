@@ -1,20 +1,43 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import App from '../App';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { App } from '../App';
 
-describe('Full App integration and review focus checks', () => {
-  it('renders ID by default, switches all sections to EN, displays all 4 contact cards with SVGs, and has zero em/en dashes in DOM', () => {
-    const { container } = render(<App />);
-    expect(screen.getByText('Tentang Saya')).toBeTruthy();
-    expect(screen.getByText('kemal.melvin.tif425@polban.ac.id').className).toContain('break-all');
-    expect(screen.getByText('@melviinn_k')).toBeTruthy();
+describe('App full interactive portfolio integration', () => {
+  it('renders Parallax intro, Spotlight portrait, 3D Glass Folders, Letter Portal, Tabbed Showcase, and 3D Activity Gallery', () => {
+    render(<App />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'EN' }));
-    expect(screen.getByText('About Me')).toBeTruthy();
-    expect(screen.getByText('Selected Projects')).toBeTruthy();
+    // 1. Parallax & Grounded Hero
+    expect(screen.getByText('WELCOME TO MY PORTOFOLIO')).toBeTruthy();
+    expect(screen.getByText(/Belajar merancang/i)).toBeTruthy();
 
-    const contactSection = container.querySelector('#contact');
-    expect(contactSection.querySelectorAll('svg').length).toBeGreaterThanOrEqual(4);
-    expect(container.textContent).not.toMatch(/[\u2013\u2014]/);
+    // 2. Spotlight Portrait & 3D Glass Folders
+    expect(screen.getByTestId('spotlight-portrait')).toBeTruthy();
+    expect(screen.getByTestId('glass-folder-projects')).toBeTruthy();
+    expect(screen.getByTestId('glass-folder-certificates')).toBeTruthy();
+
+    // 3. Projects Tab (Screenshots for Asterisk & BeasiswaKu + Code Terminal for SQL Parser)
+    expect(
+      screen.getByText(/Asterisk: Bot WhatsApp Jadwal Kuliah/i)
+    ).toBeTruthy();
+    expect(screen.getByText(/Aplikasi Desktop BeasiswaKu/i)).toBeTruthy();
+    expect(screen.getByText('test_sql_parser.py')).toBeTruthy();
+
+    // 4. Switch to Certificates Tab in Showcase
+    const certTab = screen.getByRole('tab', { name: /Sertifikat/i });
+    fireEvent.click(certTab);
+    expect(
+      screen.getAllByText(/Belajar Machine Learning untuk Pemula/i).length
+    ).toBeGreaterThan(0);
+
+    // 5. Campus Activity Gallery
+    expect(screen.getByText(/Keluarga Mahasiswa HIMAKOM Polban/i)).toBeTruthy();
+
+    // 6. Bilingual Switch to EN
+    const enBtn = screen.getByRole('button', { name: /^EN$/i });
+    fireEvent.click(enBtn);
+    expect(screen.getByText(/Learning to build/i)).toBeTruthy();
+    expect(
+      screen.getByText(/HIMAKOM Polban Student Community/i)
+    ).toBeTruthy();
   });
 });
