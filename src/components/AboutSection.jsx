@@ -40,7 +40,7 @@ export function AboutSection({ copy, profile, onSelectTab }) {
             >
               {/* Base Layer: Natural Student Portrait */}
               <img
-                src={profile?.photo || '/assets/profile_0.png'}
+                src={profile?.aboutPhoto || profile?.photo || '/assets/profile_0.png'}
                 alt={profile?.name || 'Kemal Melvin Ibrahim'}
                 className="w-full h-full object-cover object-top"
               />
@@ -58,7 +58,7 @@ export function AboutSection({ copy, profile, onSelectTab }) {
                 className="absolute inset-0 pointer-events-none transition-opacity duration-200"
               >
                 <img
-                  src={profile?.photo || '/assets/profile_0.png'}
+                  src={profile?.aboutPhoto || profile?.photo || '/assets/profile_0.png'}
                   alt=""
                   aria-hidden="true"
                   className="w-full h-full object-cover object-top filter contrast-150 saturate-200 hue-rotate-[-18deg] brightness-110"

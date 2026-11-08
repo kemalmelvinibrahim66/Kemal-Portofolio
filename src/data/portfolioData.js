@@ -10,6 +10,7 @@ export const portfolioData = {
     instagram: 'https://www.instagram.com/melviinn_k',
     instagramHandle: '@melviinn_k',
     photo: '/assets/profile_0.png',
+    aboutPhoto: '/assets/about-photo-clean.png',
     location: 'Bandung, Jawa Barat, Indonesia',
   },
   id: {
