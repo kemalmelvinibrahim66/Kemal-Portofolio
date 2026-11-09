@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { portfolioData } from './data/portfolioData';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -117,6 +118,8 @@ export function App() {
           <span>{profile.location}</span>
         </div>
       </footer>
+
+      <Analytics />
     </div>
   );
 }
